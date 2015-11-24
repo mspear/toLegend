@@ -17,6 +17,7 @@ class DecreasingReturns(HearthstoneGameplayer):
 	def testout(self):
 		total_games = 0
 		total_time = 0
+		avg_winrate = []
 
 		#The total stars will start at rank 20, the beginning of where one can loose stars.
 		self.rank_stars = 0
@@ -42,6 +43,8 @@ class DecreasingReturns(HearthstoneGameplayer):
 						self.win_percentage = winrate_spread[2]
 					else:
 						self.win_percentage = winrate_spread[3]
+
+			avg_winrate.append(self.win_percentage)
 				
 
 			if np.random.uniform(low=0, high=1) <= (self.win_percentage / 100):
@@ -61,7 +64,7 @@ class DecreasingReturns(HearthstoneGameplayer):
 			self.rank_stars -= 1
 			rankdown(self)
 
-		return (total_time/60, total_games)
+		return (total_time/60, total_games, avg_winrate)
 
 
 def rankup(player):
@@ -84,10 +87,12 @@ def main():
 
 	tmp_time = []
 	tmp_games = []
+	winrate = []
 	for runs in range(1000): #repeat 1000 times then take the average
 		results = player.testout()
 		tmp_time.append(results[0])
 		tmp_games.append(results[1])
+		winrate.append(np.average(results[2]))
 
 	total_time = np.average(tmp_time)
 	yerr_time = np.std(tmp_time)
@@ -95,8 +100,12 @@ def main():
 	total_games = np.average(tmp_games)
 	yerr_games = np.std(tmp_games)
 
-	print('With this spread of win rates it took {} games with and std of {} and {} hours with an std of {} to get to Legend\n'\
+	avg_winrate = np.average(winrate)
+	yerr_avgwinrate = np.std(winrate)
+
+	print('With this spread of win rates it took {} games with and std of {} and {} hours with an std of {}.\n'\
 		.format(total_games, yerr_games, total_time, yerr_time))
+	print('The average win rate was {} with an std of {}\n'.format(avg_winrate, yerr_avgwinrate))
 
 if __name__ == '__main__':
 	main()
