@@ -86,10 +86,11 @@ def main():
 		yerr_games = []
 
 		for percents in winrate_array:
+			#reset the tmp lists and go to the next win percentage
 			player.win_percentage = percents
 			tmp_time = []
-			tmp_games = [] 
-			for runs in range(1000):
+			tmp_games = []
+			for runs in range(1000): #repeat 1000 times then take the average
 				results = player.testout()
 				tmp_time.append(results[0])
 				tmp_games.append(results[1])
