@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -5,6 +6,8 @@ import matplotlib.pyplot as plt
 rank_dict = {20:3, 19:3, 18:3, 17:3, 16:3, \
 	             15:4, 14:4, 13:4, 12:4, 11:4, \
 	             10:5, 9:5, 8:5, 7:5, 6:5, 5:5, 4:5, 3:5, 2:5, 1:5}
+
+
 class HearthstoneGameplayer:
 	def __init__(self, win_percentage=0, starting_rank=20):
 		self.origional = starting_rank
