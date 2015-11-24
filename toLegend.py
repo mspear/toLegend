@@ -106,7 +106,7 @@ def main():
 
 		plt.figure(1)
 		plt.errorbar(x=winrate_array, y=total_games, yerr=yerr_games)
-		plt.title('Average number of games to legend with different win percentages from rank 20')
+		plt.title('Average number of games to legend from rank 20')
 		plt.xlabel('Win percentage')
 		plt.ylabel('Number of games played')
 		
@@ -114,7 +114,7 @@ def main():
 
 		plt.figure(2)
 		plt.errorbar(x=winrate_array, y=total_time, yerr=yerr_time)
-		plt.title('Average time to legend with different win percentages from rank 20')
+		plt.title('Average time to legend from rank 20')
 		plt.xlabel('Win percentages')
 		plt.ylabel('Time (in hours)')
 		
