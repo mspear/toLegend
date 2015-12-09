@@ -32,6 +32,7 @@ class HearthstoneGameplayer:
 			#http://www.hearthpwn.com/forums/hearthstone-general/general-discussion/12835-game-length-a-study
 			#http://www.gamefaqs.com/boards/710060-hearthstone-heroes-of-warcraft/68564232
 			total_time += np.random.uniform(low=5, high=16)
+			#total_time += np.random.uniform(low=5, high=6)
 
 			if np.random.uniform(low=0, high=1) <= (self.win_percentage / 100):
 				wins += 1
@@ -126,14 +127,8 @@ def main():
 		plt.show()
 
 	else:
-		while True:
-			rank = input('What rank would you like to start at? (Leave blank for 20):')
-			if rank == '':
-				rank = 20
-				break
-			if int(rank) > 20:
-				continue
-			break
+		rank = int(input('What rank would you like to start at (20 or less)?:'))
+		
 		player = HearthstoneGameplayer(win_percentage=int(winrate), starting_rank=int(rank))
 		total_games = []
 		total_time = []
